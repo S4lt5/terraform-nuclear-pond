@@ -72,6 +72,8 @@ func handler(ctx context.Context, event Event) (Response, error) {
 	event.Args = append(event.Args, "-ud", nucleiTemplates)
 	//don't update templates, we're on a readonly FS
 	event.Args = append(event.Args, "-duc")
+	//set a max response save
+	event.Args = append(event.Args, "-rss", "6000")
 
 	// Check to see if it is a single target or multiple
 	if len(event.Targets) == 1 {
